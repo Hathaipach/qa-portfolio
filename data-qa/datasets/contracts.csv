@@ -1,0 +1,5 @@
+id,title,status,amount,tenant_id,start_date,end_date
+1,Office A,ACTIVE,12000,101,2025-01-01,2025-12-31
+2,Shop B,ACTIVE,8500,102,2025-02-01,2025-08-31
+3,Warehouse C,INACTIVE,0,103,2024-05-01,2024-10-31
+4,Kiosk D,ACTIVE,5000,999,2025-01-15,2025-12-31

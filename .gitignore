@@ -1,1 +1,14 @@
 node_modules/
+# Node
+node_modules
+reports
+.playwright-report
+test-results
+.env
+
+
+# Python
+.venv
+__pycache__
+*.pyc
+data-qa/.venv

@@ -1,0 +1,5 @@
+tenant_id,tenant_name,tier
+101,Alpha Co,BASIC
+102,Beta LLC,PREMIUM
+103,Gamma Ltd,BASIC
+999,Delta Co,BASIC
