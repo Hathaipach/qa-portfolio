@@ -33,36 +33,23 @@ jobs:
           name: playwright-html-report
           path: reports/html
 
+
+
   data-qa:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: data-qa  
-        shell: bash
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
           cache-dependency-path: data-qa/requirements.txt
 
-      - name: Debug path
+      - name: Install requirements (includes pandas)
         run: |
-          pwd
-          ls -la
-          python --version
-
-      - name: Create venv
-        run: python -m venv .venv
-
-      - name: Install requirements
-        run: |
-          source .venv/bin/activate
-          python -m pip install --upgrade pip wheel setuptools
-          pip install -r requirements.txt
+          python -m pip install --upgrade pip
+          python -m pip install -r data-qa/requirements.txt
 
       - name: Run data checks
-        run: |
-          source .venv/bin/activate
-          python run_checks.py
+        run: python data-qa/run_checks.py
