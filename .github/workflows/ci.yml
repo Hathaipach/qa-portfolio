@@ -25,7 +25,7 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: npm run test
+        run: npm run test                 # ใช้ reporter/pahs จาก config
       - name: Upload HTML report
         if: always()
         uses: actions/upload-artifact@v4
@@ -33,24 +33,35 @@ jobs:
           name: playwright-html-report
           path: reports/html
 
-
   data-qa:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: data-qa
+        working-directory: data-qa        # ★ รันทุกคำสั่งในโฟลเดอร์นี้
+        shell: bash
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
-      - name: Setup venv & install
+          cache-dependency-path: data-qa/requirements.txt
+
+      - name: Debug path
         run: |
-          python -m venv .venv
+          pwd
+          ls -la
+          python --version
+
+      - name: Create venv
+        run: python -m venv .venv
+
+      - name: Install requirements
+        run: |
           source .venv/bin/activate
-          python -m pip install --upgrade pip
-          python -m pip install -r requirements.txt
+          python -m pip install --upgrade pip wheel setuptools
+          pip install -r requirements.txt
+
       - name: Run data checks
         run: |
           source .venv/bin/activate
