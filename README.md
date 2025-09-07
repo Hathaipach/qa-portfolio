@@ -1,5 +1,6 @@
 # QA Portfolio
-# Data QA Module
+
+[![CI](https://github.com/Hathaipach/qa-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/Hathaipach/qa-portfolio/actions/workflows/ci.yml)
 
 
 Shows how to do **Data Quality** checks with Pandas:
